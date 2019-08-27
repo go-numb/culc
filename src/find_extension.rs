@@ -1,5 +1,5 @@
 fn main() {
-    let filename = "filename.jpeg";
+    let filename = "filename.min.jpeg";
     match find(filename, '.') { // .以降の拡張子を検索する（filename.min.jpegには適用されない）
         None => println!("拡張子が見つかりません."),
 
