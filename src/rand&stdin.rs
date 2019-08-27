@@ -19,8 +19,13 @@ fn main() {
             .expect("Failed to read line");
 
         // stringの両端空白/タブをtrimしparse
-        let input_string_2number: u32 = input_string_2number.trim().parse()
-            .expect("Failed to read string to number.");
+        let input_string_2number: u32 = match input_string_2number.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("Failed, input has string. retry input number!");
+                continue;
+            }
+        };
 
         // input_string_2numberを受取り比較対象型にしプリント
         match input_string_2number.cmp(&secret_number) {
@@ -28,10 +33,10 @@ fn main() {
             Ordering::Greater => println!("Too big!"),
             Ordering::Equal   => {
                 println!("You win!");
-                break
+                break;
             }
         }
     }
 
-    println!("game is done!!")
+    println!("game is done!!");
 }
